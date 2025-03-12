@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Depository.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Depository.Api.Controllers.HangfireController.DoScheduleTPlusN(System.Collections.Generic.List{Depository.Core.Models.ths_tasks},System.Guid)">
+            <summary>
+             t+n функция
+            </summary>
+            <param name="ths_tasks"></param>
+            <param name="user_guid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Depository.Api.Controllers.IncomingPackagesController.GetRawBySector(System.Int32)">
+            <summary>
+            Выдает список необработанных отправленных биржой ценных бумаг.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Depository.Api.Controllers.IncomingPackagesController.Import(Depository.Core.Models.incoming_packages,System.Guid)">
+            <summary>
+            Переносит необработанные ЦБ в trade_history_securities/trade_history_currencies/order_history_securities.Устанавливает метку обработки ЦБ в  raw_trade_securities.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Depository.Api.Controllers.OrdersHistorySecuritiesController.Import(System.Collections.Generic.List{Depository.Core.Models.orders_history_securities},System.DateTime,System.Guid)">
+            <summary>
+            Импортирует/записывает остатки по ЦБ которые отдает Биржа после ТС
+            </summary>
+        </member>
+        <member name="M:Depository.Api.Controllers.OrdersHistorySecuritiesController.RecalcAfterImport(System.DateTime,System.Guid)">
+            <summary>
+            Пересчитывает остаток по ЦБ учитывая импортированных данных.
+            </summary>
+        </member>
+        <member name="M:Depository.Api.Controllers.StockCurrencyController.ExportCurrency(System.Guid,System.Boolean)">
+            <summary>
+            Блокирует остаток ДС и отправляет в КФБ
+            </summary>
+        </member>
+        <member name="M:Depository.Api.Controllers.StockSecurityController.ExportSecurity(System.Guid,System.Nullable{System.Int32},System.Boolean)">
+            <summary>
+            Блокирует остаток ЦБ и отправляет в КФБ
+            </summary>
+        </member>
+        <member name="M:Depository.Api.Controllers.TradesHistorySecuritiesController.Import(System.Collections.Generic.List{Depository.Core.Models.trades_history_securities},System.DateTime,System.Guid)">
+            <summary>
+            Импортирует/записывает заключенные сделки по итогам торговой сессии(TRD)
+            </summary>
+        </member>
+        <member name="M:Depository.Api.Controllers.TradesHistorySecuritiesController.RecalcAfterImport(System.DateTime,System.Guid)">
+            <summary>
+            Пересчитывает остаток после заключенных сделок по итогам торговой сессии(TRD)
+            </summary>
+        </member>
+    </members>
+</doc>

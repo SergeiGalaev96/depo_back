@@ -1,0 +1,14 @@
+﻿1>------ Build started: Project: Depository.Mail, Configuration: Release Any CPU ------
+1>Depository.Mail -> C:\Users\Aziz.Nortozhiev\source\repos\Depository\Depository.Mail\bin\Release\netcoreapp3.1\Depository.Mail.dll
+2>------ Publish started: Project: Depository.Api, Configuration: Release Any CPU ------
+C:\Program Files\dotnet\sdk\3.1.302\Sdks\Microsoft.NET.Sdk\targets\Microsoft.NET.Sdk.FrameworkReferenceResolution.targets(39,5): Warning NETSDK1086: A FrameworkReference for 'Microsoft.AspNetCore.App' was included in the project. This is implicitly referenced by the .NET SDK and you do not typically need to reference it from your project. For more information, see https://aka.ms/sdkimplicitrefs
+Depository.Api -> C:\Users\Aziz.Nortozhiev\source\repos\Depository\Depository.Api\bin\Release\netcoreapp3.1\Depository.Api.dll
+Depository.Api -> C:\Users\Aziz.Nortozhiev\source\repos\Depository\Depository.Api\bin\Release\netcoreapp3.1\Depository.Api.Views.dll
+Depository.Api -> C:\Users\Aziz.Nortozhiev\source\repos\Depository\Depository.Api\obj\Release\netcoreapp3.1\PubTmp\Out\
+Updating file (C:\Users\Aziz.Nortozhiev\source\repos\Depository\Depository.Api\obj\Release\netcoreapp3.1\PubTmp\Out\web.config).
+Package "Depository.Api.zip" is successfully created as single file at the following location:
+file:///C:/Users/Aziz.Nortozhiev/Documents/My%20Web%20Sites
+To get the instructions on how to deploy the web package please visit the following link:
+http://go.microsoft.com/fwlink/?LinkId=124618
+========== Build: 1 succeeded, 0 failed, 5 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========

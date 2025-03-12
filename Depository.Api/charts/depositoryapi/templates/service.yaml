@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "depositoryapi.fullname" . }}
+  labels:
+    app: {{ template "depositoryapi.name" . }}
+    chart: {{ template "depositoryapi.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "depositoryapi.name" . }}
+    release: {{ .Release.Name }}

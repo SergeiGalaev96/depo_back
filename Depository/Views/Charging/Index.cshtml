@@ -1,0 +1,73 @@
+﻿@using Depository.Core.Models.DTO;
+@using Kendo.Mvc.UI;
+@using Kendo.Mvc;
+@{
+    ViewData["Title"] = "Начисление";
+}
+
+
+@(Html.Kendo().Grid<Brands>()
+                        .Name("Grid")
+                        .Columns(columns =>
+                        {
+                            columns.Bound(e => e.Id).Visible(false);
+                            columns.Bound(e => e.Name).Visible(true);
+                        })
+                        .Mobile()
+                        .Filterable()
+                        .Pageable()
+                        .Scrollable(s => s.Height("auto"))
+                        .ClientDetailTemplateId("template")
+                            .ToolBar
+                            (toolbar =>
+                            {
+                                toolbar.Search();
+                                toolbar.Excel().Text("Экспорт в Excel").IconClass("fa fa-mail-bulk");
+                            }
+                            )
+                            .Excel
+                            (excel => excel
+                                    .AllPages(true)
+                            )
+
+                        .DataSource(datasource => datasource
+                       .Ajax()
+                        .ServerOperation(false)
+                       .PageSize(50)
+                       .Read(read => read.Action("Gets", "Brands"))
+                       )
+                       .Resizable(resize => resize.Columns(true))
+)
+
+<script id="template" type="text/kendo-tmpl">
+
+        @(Html.Kendo().Grid<OnlinePayments.Core.Models.Payments>()
+            .Name("grid_#=Month##=Year#")
+            .Columns(columns =>
+            {
+                columns.Bound(o => o.PaymentDate).Format("{0: dd.MM.yyyy}").Title("Дата оплаты").Width(80);
+                columns.Bound(o => o.Account).Title("Лицевой счет").Width(110);
+                columns.Bound(o => o.Sum).Title("Сумма").Width(110);
+                columns.Bound(o => o.Fio).Title("ФИО").Width(150);
+                columns.Bound(o => o.Adres).Title("Адрес").Width(200);
+            })
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                .PageSize(10)
+                .Read(read => read.Action("GetPaymentsDetalization", "Report", new { month = "#=Month#", year= "#=Year#" }))
+            )
+            .Mobile()
+            .Pageable()
+            .Sortable()
+            .ToClientTemplate()
+    )
+</script>
+
+<script>
+        function onError(e) {
+            console.log(JSON.stringify(e)); // displays "error"
+        }
+        function dataBound() {
+            this.expandRow(this.tbody.find("tr.k-master-row").first());
+        }
+</script>

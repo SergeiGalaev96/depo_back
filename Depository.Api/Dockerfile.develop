@@ -1,0 +1,23 @@
+FROM mcr.microsoft.com/dotnet/sdk:5.0
+ARG BUILD_CONFIGURATION=Debug
+ENV ASPNETCORE_ENVIRONMENT=Development
+ENV ASPNETCORE_URLS=http://+:80
+ENV DOTNET_USE_POLLING_FILE_WATCHER=true
+EXPOSE 80
+
+WORKDIR /src
+COPY ["Depository.Api/Depository.Api.csproj", "Depository.Api/"]
+COPY ["Depository.Core/Depository.Core.csproj", "Depository.Core/"]
+COPY ["Depository.DAL/Depository.DAL.csproj", "Depository.DAL/"]
+COPY ["Depository.Domain/Depository.Domain.csproj", "Depository.Domain/"]
+COPY ["Depository.Mail/Depository.Mail.csproj", "Depository.Mail/"]
+COPY ["Depository.MassTransit/Depository.MassTransitQueue.csproj", "Depository.MassTransit/"]
+
+RUN dotnet restore "Depository.Api/Depository.Api.csproj"
+COPY . .
+WORKDIR "/src/Depository.Api"
+RUN dotnet build --no-restore "Depository.Api.csproj" -c $BUILD_CONFIGURATION
+
+RUN echo "exec dotnet run --no-build --no-launch-profile -c $BUILD_CONFIGURATION --" > /entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]

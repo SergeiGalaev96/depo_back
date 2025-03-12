@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  depository.api:
+    image: ${DOCKER_REGISTRY-}depositoryapi
+    build:
+      context: .
+      dockerfile: Depository.Api/Dockerfile
